@@ -36,4 +36,10 @@ class WikisController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @wiki = Wiki.find(params[:id])
+    @wiki.destroy
+    redirect_to action: :index
+  end
 end
