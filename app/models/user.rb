@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   validates :role, inclusion: { in: %w{standard admin premium} }
+  has_many :wikis
   
   def role
     self[:role] ||= 'standard'
