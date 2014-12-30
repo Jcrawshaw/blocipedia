@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :wikis
+  resources :wikis do
+    collection do
+      get :all
+    end
+  end
 
   devise_for :users
   get 'welcome/index'

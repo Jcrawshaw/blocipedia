@@ -1,4 +1,4 @@
-<h1>All Wikis</h1>
+<h1><%= @whose %> Wikis</h1>
 
 <% if policy(Wiki.new).create? %>
   <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
@@ -8,5 +8,5 @@
   <p><%= link_to wiki.title, wiki %></p>
   <small>
     submitted <%= time_ago_in_words(wiki.created_at) %> ago by <%= wiki.user.name %><br/>
-  <small>
+  </small>
 <% end %>
