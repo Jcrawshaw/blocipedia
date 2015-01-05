@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :charges, only: [:new, :create]
   devise_for :users
   get 'welcome/index'
 
