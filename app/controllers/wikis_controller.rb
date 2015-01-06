@@ -4,7 +4,7 @@ class WikisController < ApplicationController
       @wikis = current_user.wikis
       @whose = 'My'
     else
-      @wikis = Wiki.all
+      @wikis = Wiki.public_only
       @whose = 'All'
     end
     authorize @wikis
@@ -12,7 +12,7 @@ class WikisController < ApplicationController
 
   def all
     @whose = 'All'
-    @wikis = Wiki.all
+    @wikis = Wiki.public_only
     authorize @wikis
     render :index
   end
@@ -27,7 +27,7 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = current_user.wikis.build(params.require(:wiki).permit(:title, :body))
+    @wiki = current_user.wikis.build(params.require(:wiki).permit(:title, :body, :private))
     authorize @wiki
     if @wiki.save
       flash[:notice] = "Wiki entry was saved."

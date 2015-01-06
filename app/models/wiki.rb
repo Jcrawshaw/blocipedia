@@ -3,4 +3,7 @@ class Wiki < ActiveRecord::Base
 
   validates :title, presence: true
   default_scope { order('created_at DESC') }
+  #scope :public_only, -> { where( private: nil) }
+  scope :public_only, -> { where private: [nil, false] }
+  scope :private_only, -> { where private: true }
 end

@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
   def role
     self[:role] ||= 'standard'
   end
+
+  def premium?
+    role == 'premium' || role == 'admin'
+  end
+
 end

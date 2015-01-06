@@ -8,7 +8,7 @@ class ApplicationPolicy
 
   def index?
     false
-  end
+  end 
 
   def show?
     scope.where(:id => record.id).exists?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present
+    user.present?
   end
 
   def edit?

@@ -18,8 +18,9 @@ def create
   current_user.role = "premium"
   current_user.save
   
-  flash[:success] = "Thank you for upgrading to a premium Blocipedia account!"
-  redirect_to user_path(current_user)
+  flash[:notice] = "Thank you for upgrading to a premium Blocipedia account!"
+  #redirect_to user_path(current_user)
+  redirect_to wikis_path
 
 rescue Stripe::CardError => e
   flash[:error] = e.message
@@ -27,6 +28,8 @@ rescue Stripe::CardError => e
 end
 
 def new
+  @amount = 1500
+
   @stripe_btn_data = {
     key: "#{ Rails.configuration.stripe[:publishable_key] }",
     description: "Premium Membership #{current_user.email}",
