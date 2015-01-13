@@ -10,4 +10,13 @@ RSpec.describe Wiki, :type => :model do
     expect(wiki).to_not be_valid
   end
 
+  it "has user" 
+  
+  it "has many collaborators" do
+    # user = FactoryGirl.create :user
+    # wiki.collaborations.create user: user
+
+    # expect(wiki.collaborators).to eql [user]
+  end
+
 end

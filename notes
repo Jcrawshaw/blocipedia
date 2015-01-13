@@ -1,0 +1,36 @@
+
+Add Collaborators button to WikisController#show page, if current_user  == @wiki.user
+= link_to "Manage C", wiki_collaborators_path(@wiki)
+
+create a CollaboratorsController
+add :collaborators resource to routes.rb under :wiki
+
+/wikis/123/collaborators
+#index action, for a wiki, current_user must be the wiki.user
+
+  @users = User.all # all the user on the system
+  @collaborstors = @wiki.collaborators
+
+  in the view, make a list of all users on the system
+      Mary          link_to "Add", new_wiki_collaboration(@wiki, user: user.id)  
+
+      Joe           link_to "Remove", wiki_collaboration(@wiki, collaboration), method: :delete
+
+  - mary is not in @collaborators so we can add her
+  - joe is in @collaborators so we can remove him
+
+
+  # new action GET
+
+    view: "Add x to y? " confirmation form, 
+      form_for 
+        
+
+  #create action POST /wikis/123?user_id=333
+    @wiki = Wiki.find params[:wiki_id]
+    @user = User.find params[:user_id]
+    @wiki.collaborations.create user: @user
+
+
+  #delete action
+

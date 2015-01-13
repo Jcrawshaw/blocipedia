@@ -1,13 +1,6 @@
 class WikisController < ApplicationController
   def index
-    if current_user
-      @wikis = current_user.wikis
-      @whose = 'My'
-    else
-      @wikis = Wiki.public_only
-      @whose = 'All'
-    end
-    authorize @wikis
+    @wikis = policy_scope(Wiki)
   end
 
   def all
