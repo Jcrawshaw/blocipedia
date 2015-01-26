@@ -14,7 +14,7 @@ class Scope
 
   def initialize(user, scope)
     @user = user
-    @scope = scopen
+    @scope = scope
   end
 
   def resolve

@@ -9,6 +9,10 @@
   <p><strong>PRIVATE</strong></p>
 <% end %>
 
+<% if current_user == @wiki.user %>
+  <%= link_to "Manage Collaborators", wiki_collaborations_path(@wiki), class: 'btn btn-success' %>
+<% end %> 
+
 <% if policy(@wiki).destroy? %>
   <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this data?' } %>
 <% end %>

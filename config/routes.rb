@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :wikis do
+    resources :collaborations
     collection do
       get :all
     end
